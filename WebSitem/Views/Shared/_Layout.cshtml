@@ -1,0 +1,206 @@
+﻿@{
+    var blogs = ViewData["FollowedBlogs"] as List<WebSitem.Models.FollowedBlog>;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  
+<title>GreenLine</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/css/style.css" rel="stylesheet" type="text/css " asp-append-version="true"/>
+<script type="text/javascript" src="/js/cufon-yui.js"></script>
+<script type="text/javascript" src="/js/arial.js"></script>
+<script type="text/javascript" src="/js/cuf_run.js"></script>
+<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/js/radius.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- jQuery -->
+
+<!-- jQuery UI -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+
+
+
+</head>
+<body>
+<!-- START PAGE SOURCE -->
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="menu_nav">
+        <ul>
+          <li><a href="/blogs/index">Anasayfa</a></li>
+          <li><a href="/blogs/Support">Destek</a></li>
+          <li><a href="/blogs/About">Hakkımızda</a></li>
+          @* <li><a href="blog.html">Blog</a></li> *@
+          <li><a href="/blogs/Contact">İletişim</a></li>
+          <li><a href="/Admin/Index">Admin Girişi</a></li>
+          <li><a href="/blogs/Resources">Kaynaklar</a></li>
+
+        </ul>
+      </div>
+      <div class="logo">
+        <h1><a href="/blogs/index">Ozan<span>Duru</span></a> <small>Bir takım düşünsel çalışmalar</small></h1>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+            
+                 @RenderBody()
+            
+         
+        @* <div class="searchform" >
+          <form class="modern-search" method="post" action="#">
+            <input type="text" placeholder="Sitede ara..." maxlength="80" name="editbox_search" />
+            <button type="submit" aria-label="Ara">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <div class="gadget">
+          <h2 class="star"><span>Yan</span> Menu</h2>
+          <div class="clr"></div>
+          <ul class="sb_menu">
+            <li><a href="/blogs/index">Anasayfa</a></li>
+            <li><a href="/blogs/Support">Destek</a></li>
+            <li><a href="/blogs/About">Hakkımızda</a></li>
+            
+            <li><a href="/blogs/Contact">İletişim</a></li>
+          </ul>
+        </div> *@
+        <div class="sidebar">
+
+  <!-- Calendar -->
+  
+  <div>  <!-- Buraya bir takvim eklersin. Hazır takvim scriptleri (örn. jQuery UI datepicker, fullcalendar) veya sadece HTML tablo ile -->
+   <div class="gadget">
+  <h2 class="star"><span>Takvim</span></h2>
+  <div id="sidebar-calendar"></div>
+</div>
+  </div>
+
+  
+  <div class="gadget">
+  <h2 class="star"><span>Çalışma Saatleri & Bilgi</span></h2>
+  <div class="clr"></div>
+  <div style="color:#666; font-size:1em;">
+    <b>Biruni Üniversitesi</b><br>
+    <a href="https://maps.app.goo.gl/uaS9avjo44oF1a9p7" target="_blank" style="color:#1565c0; text-decoration:underline;">
+      Merkezefendi, 75. Sk No:1-13 M. G, 34015 Zeytinburnu / İstanbul
+    </a><br>
+    <strong>+90 538 091 76 74</strong><br>
+    <b>Çalışma Saatleri:</b> Hafta içi 11:00 - 14:00
+  </div>
+</div>
+
+
+  <!-- Follow Me (Senin sosyal medya linklerin) -->
+  <div class="gadget">
+    <h2 class="star"><span>Beni Takip Et</span></h2>
+    <div class="clr"></div>
+    <ul class="social-menu" style="list-style:none; padding-left:0; margin-top:14px;">
+      <li style="margin-bottom:10px;">
+        <a href="https://www.youtube.com/@@ozanduru4645/videos" target="_blank" style="text-decoration:none; color:#555;">
+          <i class="fab fa-youtube" style="color:#FF0000; font-size:1.45em; margin-right:8px;"></i> YouTube
+        </a>
+      </li>
+      <li style="margin-bottom:10px;">
+        <a href="https://www.instagram.com/oznduru_" target="_blank" style="text-decoration:none; color:#555;">
+          <i class="fab fa-instagram" style="color:#E4405F; font-size:1.45em; margin-right:8px;"></i> Instagram
+        </a>
+      </li>
+      <li style="margin-bottom:10px;">
+        <a href="https://www.linkedin.com/in/ozanduru" target="_blank" style="text-decoration:none; color:#555;">
+          <i class="fab fa-linkedin" style="color:#0e76a8; font-size:1.45em; margin-right:8px;"></i> LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/OzanDuru" target="_blank" style="text-decoration:none; color:#555;">
+          <i class="fab fa-github" style="color:#222; font-size:1.45em; margin-right:8px;"></i> GitHub
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Blogs I Follow -->
+  @if (blogs != null)
+{
+    <div class="gadget">
+        <h2 class="star"><span>Takip Ettiğim Bloglar</span></h2>
+        <div class="clr"></div>
+        <ul class="follow-blogs" style="list-style:none; padding-left:0; margin-top:14px;">
+            @foreach (var blog in blogs)
+            {
+                <li>
+                    <a href="@blog.Url" target="_blank">@blog.Name</a>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+<!-- Font Awesome ikonları için -->
+
+
+
+          </ul>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="fbg">
+    <div class="fbg_resize">
+      <div class="col c1">
+        <h2><span>Galeri</span></h2>
+        <a href="#"><img src="/images/pix1.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix2.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix3.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix4.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix5.jpg" width="58" height="58" alt="" /></a> <a href="#"><img src="/images/pix6.jpg" width="58" height="58" alt="" /></a> </div>
+        <div class="col c2">
+        <h2><span>Biz Kimiz?</span></h2>
+        <p>Biz, teknolojiye tutkuyla bağlı, yenilikleri yakından takip eden bir yazılım geliştirici ekibiyiz.<br />
+        Web geliştirme, veri tabanı yönetimi ve yapay zekâ gibi birçok alanda projeler geliştiriyor; kullanıcı odaklı çözümler sunuyoruz. 
+        <a href="/blogs/About">Daha fazla bilgi almak için tıklayın</a>. 
+        Yolculuğumuz boyunca sürekli öğreniyor, gelişiyor ve değer üreten işler ortaya koymayı hedefliyoruz.</p>
+        </div>
+      <div class="col c3">
+            <h2><span>İletişim</span></h2>
+            <p>Her türlü soru, öneri ya da iş birliği talepleriniz için bizimle iletişime geçebilirsiniz.</p>
+            <p><a href="mailto:technozan09@gmail.com">technozan09@gmail.com</a></p>
+            <p>+90 538 091 76 74</p>
+            <p>Adres: Merkezefendi, 75 Sk No:1-13 M. G, 34015 Zeytinburnu / İstanbul  
+            <br />Biruni Üniversitesi</p>
+
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="lf">Copyright &copy; 2025 <a href="/Blogs/Index">OzanDuru</a> - All Rights Reserved</p>
+      <p class="rf">Design by <a href="/Blogs/Index"> Ozan Duru </a></p>
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+<!-- END PAGE SOURCE -->
+
+<script>
+$(function() {
+    $("#sidebar-calendar").datepicker({
+        showOtherMonths: true,
+        selectOtherMonths: true,
+        // Türkçe için:
+        monthNames: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+            "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+        dayNamesMin: ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+        firstDay: 1 // Pazartesi ile başlasın
+    });
+});
+</script>
+</body>
+</html>

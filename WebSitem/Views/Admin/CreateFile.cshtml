@@ -1,0 +1,81 @@
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model FileResourceViewModel
+
+
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Kaynak Ekle</h1>
+    <a href="/Admin/Index" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+        <i class="fas fa-arrow-left fa-sm text-white-50"></i> Geri Dön
+    </a>
+</div>
+
+<form action= "/Admin/CreateFile" enctype="multipart/form-data" method="post" id="createFileForm">
+    <!-- Başlık -->
+    <div class="form-group">
+        <input type="text"
+               id="filetitle"
+               name="Title"
+               class="form-control form-control-user"
+               placeholder="Kaynak Başlığı Giriniz"
+               required>
+    </div>
+
+    <!-- Açıklama -->
+    <div class="form-group">
+        <textarea id="filedescription"
+                  name="Description"
+                  class="form-control form-control-user"
+                  placeholder="Açıklama Giriniz"
+                  rows="4"
+                  required></textarea>
+    </div>
+
+    <!-- Dosya Yükle -->
+    <div class="form-group">
+        <label for="uploadfile">Dosya Yükle (PDF, Word, görsel vb. - opsiyonel)</label>
+        <input type="file"
+               id="uploadfile"
+               name="UploadedFile"
+               class="form-control form-control-user"
+               accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.xls,.xlsx,.zip,.rar"
+               required>
+    </div>
+
+    <!-- veya Harici Link -->
+    <div class="form-group">
+        <label for="externallink">Harici Link</label>
+        <input type="url"
+               id="externallink"
+               name="ExternalLink"
+               class="form-control form-control-user"
+               placeholder="https://drive.google.com/..., https://arxiv.org/...">
+    </div>
+
+    <div class="alert alert-info my-2">
+        <strong>Not:</strong> <br />
+        Dosya eklemek zorunludur.Link eklemek opsiyoneldir. <br />
+    </div>
+
+
+    <div class="d-flex flex-wrap align-items-center my-2 action-bar">
+        <button class="btn btn-success btn-icon-split mr-2">
+            <span class="icon text-white-50"><i class="fas fa-check"></i></span>
+            <span class="text">Kaydet</span>
+        </button>
+        
+    </div>
+    @if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+</form>
+
+

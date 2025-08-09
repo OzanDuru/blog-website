@@ -1,0 +1,64 @@
+@* Blog Details razor pagei *@
+@model BlogDetailsViewModel
+
+
+<div class="mainbar">
+        <div class="article">
+          <h2><span>@Model.Blog.Name</span> </h2>
+          <div class="clr"></div>
+          <p>@Model.Blog.Description </p>
+          <p>Etiketler:<a href="#">@Model.Blog.Tags</a> </p>
+          <p><a href="#"><strong>Comments (@Model.Blog.CommentCount)</strong></a> <span>&nbsp;&bull;&nbsp;</span>@Model.Blog.PublishDate.ToString("MMMM d\\t\\h  , yyyy 'at' h:mm tt") <span>&nbsp;&bull;&nbsp;</span> <a href="#"></a></p>
+        </div>
+        <div class="article">
+         
+          <h2>Yorumlar</h2>
+          <div class="clr"></div>
+          @foreach (var comment in Model.Comments)
+          {
+            <div class="comment"> <a href="#"><img src="/images/userpic.gif" width="40" height="40" alt="" class="userpic" /></a>
+            <p><a href="#">@comment.Name</a> Dedi ki:<br />@comment.PublishDate.ToString("MMMM d\\t\\h  , yyyy 'at' h:mm tt")</p>
+            <p>@comment.Message</p>
+          </div>
+
+          }
+
+         
+        </div>
+        <div class="article">
+          <h2><span>Leave a</span> Reply</h2>
+          <div class="clr"></div>
+
+          
+
+<form asp-action="CreateComment" method="post" id="leavereply">
+    <ol>
+        <input type="hidden" name="BlogId" value="@Model.Blog.Id" />
+
+        <li>
+            <label for="Name">İsim (Zorunlu)</label>
+            <input id="Name" name="Name" class="text" />
+        </li>
+
+        <li>
+            <label for="Email">Email Adresi (Zorunlu)</label>
+            <input id="Email" name="Email" class="text" />
+        </li>
+
+        <li>
+            <label for="Message">Yorumunuz</label>
+            <textarea id="Message" name="Message" rows="8" cols="50"></textarea>
+        </li>
+
+        <li>
+            <input type="image" id="imageField" src="/images/submit.gif" class="send" />
+            <div class="clr"></div>
+        </li>
+    </ol>
+</form>
+
+
+        </div>
+      </div>
+
+      

@@ -1,0 +1,98 @@
+@model List<WebSitem.Models.FileResource>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="mainbar">
+    @foreach (var item in Model)
+    {
+        <div class="resource-card" style="margin-bottom: 32px;">
+            <div class="resource-header">
+                <span class="resource-icon">
+                    @{
+                        string extension = "";
+                        if (!string.IsNullOrEmpty(item.OriginalFileName) && item.OriginalFileName.Contains('.'))
+                        {
+                            extension = System.IO.Path.GetExtension(item.OriginalFileName)?.Replace(".", "").ToLower();
+                        }
+                    }
+                    @if (extension == "pdf")
+                    {
+                        <i class="fa-solid fa-file-pdf" style="color:#C41E1E"></i>
+                    }
+                    else if (extension == "doc" || extension == "docx")
+                    {
+                        <i class="fa-solid fa-file-word" style="color:#2B579A"></i>
+                    }
+                    else if (extension == "ppt" || extension == "pptx")
+                    {
+                        <i class="fa-solid fa-file-powerpoint" style="color:#D24726"></i>
+                    }
+                    else if (extension == "xls" || extension == "xlsx")
+                    {
+                        <i class="fa-solid fa-file-excel" style="color:#217346"></i>
+                    }
+                    else if (extension == "zip" || extension == "rar")
+                    {
+                        <i class="fa-solid fa-file-zipper" style="color:#E1A100"></i>
+                    }
+                    else if (!string.IsNullOrEmpty(extension))
+                    {
+                        <i class="fa-solid fa-file" style="color:#666"></i>
+                    }
+                </span>
+                <div class="resource-title-group">
+                    <h2 class="resource-title">@item.Title</h2>
+                    <span class="resource-date">
+                        <i class="fa-regular fa-calendar"></i>
+                        @item.UploadedAt.ToString("dd MMMM yyyy, HH:mm")
+                    </span>
+                </div>
+            </div>
+            <div class="resource-description">
+                @item.Description
+            </div>
+            <div class="resource-file-name" style="color:#888; font-size:0.97rem;">
+                @if (!string.IsNullOrEmpty(item.OriginalFileName))
+                {
+                    <span><i class="fa-solid fa-paperclip"></i> @item.OriginalFileName</span>
+                }
+            </div>
+            <div class="resource-actions">
+                @if (!string.IsNullOrEmpty(item.StoredFileName))
+                {
+                    <a href="/uploads/@item.StoredFileName" download class="btn btn-outline-primary btn-sm" title="Kaynağı İndir">
+                        <i class="fa-solid fa-download"></i> İndir
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(item.ExternalLink))
+                {
+                    <a href="@item.ExternalLink" target="_blank" class="btn btn-outline-success btn-sm ml-2" rel="noopener" title="Harici Kaynak">
+                        <i class="fa-solid fa-up-right-from-square"></i> Harici Kaynak
+                    </a>
+                }
+            </div>
+        </div>
+    }
+</div>
+<div class="sidebar">
+        <div class="searchform">
+          <h2 class="star"><span>Yan Menu</span></h2>
+          <div class="clr"></div>
+    <div class="searchform" ></div>
+          <form class="modern-search"  method="get" action="/Blogs/ResourceContains">
+            <input class="form-control me-2" type="search"  name="query" placeholder="Kaynak Ara..." aria-label="Ara">
+            <button type="submit" aria-label="Ara">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <div class="gadget">
+          
+          <div class="clr"></div>
+          <ul class="sb_menu">
+            <li><a href="/blogs/index">Anasayfa</a></li>
+            <li><a href="/blogs/Support">Destek</a></li>
+            <li><a href="/blogs/About">Hakkımızda</a></li>
+            
+            <li><a href="/blogs/Contact">İletişim</a></li>
+          </ul>
+        </div>

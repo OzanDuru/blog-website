@@ -1,0 +1,64 @@
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model List<FollowedBlog>
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Takip Ettiğim Bloglar</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Blog Adı</th>
+                        <th>Blog Linki</th>
+                        <th>Eklenme Tarihi</th>
+                        <th>Ekleyen Admin</th>
+                        <th style="width:55px;">Aksiyon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    int index = 1;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@index</td>
+                            <td>@item.Name</td>
+                            <td>
+                                <a href="@item.Url" class="btn btn-sm btn-outline-info" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Git
+                                </a>
+                            </td>
+                            <td>@item.AddedDate.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@item.AddedByUserName</td>
+                            <td>
+                                <form asp-action="DeleteFollowedBlog" asp-route-id="@item.Id" method="post" style="display:inline;">
+                                    <button type="submit" class="btn btn-sm btn-danger" title="Sil"
+                                        onclick="return confirm('Bu blogu silmek istediğinize emin misiniz?');">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        index++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">Takip edilen blog bulunamadı.</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

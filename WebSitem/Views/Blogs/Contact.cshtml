@@ -1,0 +1,45 @@
+<div class="mainbar">
+        <div class="article">
+          <h2><span>✉️ İletişim</span></h2>
+          <div class="clr"></div>
+          <p>Bir fikrin mi var, bir sorunun mu oldu, yoksa sadece “Merhaba” demek mi istiyorsun?</p>
+          <p>Kodlar, projeler, öneriler ya da sadece güzel bir sohbet için bana her zaman ulaşabilirsin.</p>
+          <p>Geri bildirimlerin benim için çok değerli. Çünkü bu sayfa sadece benim değil, hepimizin ortak öğrenme alanı.</p>
+          <p>
+            📬 Bana mail at: 
+            <a href="mailto:technozan09@gmail.com">technozan09@gmail.com</a>
+          </p>
+          <p>Unutma, en iyi projeler bir selamla başlar. 😊</p>
+
+        </div>
+        <div class="article">
+          <h2><span>Bize Mail</span> Atın</h2>
+          <div class="clr"></div>
+         <form asp-action="CreateContact" method="post" id="contactform">
+              <ol>
+          
+                  <li>
+                      <label for="Name">İsim (Zorunlu)</label>
+                      <input id="Name" name="Name" class="text" />
+                  </li>
+
+                  <li>
+                      <label for="Email">Email Adresi (Zorunlu)</label>
+                      <input id="Email" name="Email" class="text" />
+                  </li>
+
+                  <li>
+                      <label for="Message">Yorumunuz</label>
+                      <textarea id="Message" name="Message" rows="8" cols="50"></textarea>
+                  </li>
+
+                  <li>
+                      <input type="image" id="imageField" src="/images/submit.gif" class="send" />
+                      <div class="clr"></div>
+                  </li>
+              </ol>
+          </form>
+        </div>
+      </div>
+
+      

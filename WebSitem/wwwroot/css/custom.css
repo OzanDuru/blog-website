@@ -1,0 +1,76 @@
+/* BACKGROUND  --------------------------------------------------------------*/
+body {
+    /* Daha yumuşak, modern bir degrade */
+    background: linear-gradient(180deg, #4675f0 0%, #1d4ed8 100%);
+    position: relative;         /* pseudo-element konumlandırmak için */
+    min-height: 100vh;
+  }
+  
+  /* LOGIN CARD  --------------------------------------------------------------*/
+  .auth-card {
+    /* beyaz yerine yarı saydam “glassmorphism” */
+    background: rgba(255,255,255,.65);
+    backdrop-filter: blur(12px) saturate(160%);
+    
+    box-shadow: 0 24px 48px -12px rgba(13,37,76,.15);
+    border-radius: 18px;               /* köşeleri biraz daha yuvarlak */
+    padding: 3.5rem 4rem;
+    transition: box-shadow .3s ease;
+  }
+  .auth-card:hover{
+    box-shadow: 0 32px 56px -12px rgba(13,37,76,.22);
+  }
+  body::before{
+    content:"";
+    position: fixed;            /* ekrana tam yapışır */
+    inset: 0;                   /* top/right/bottom/left:0 kısayolu */
+    background: url(../images/login_bg.gif) center/cover no-repeat;
+    filter: blur(12px);         /* bulanıklık miktarı */
+    transform: scale(1.08);     /* blur kenarları küçültmesin diye hafif büyütüyoruz */
+    z-index: -2;                /* her şeyin arkasında */
+  }
+
+  body::after{
+    content:"";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.35);/* metni öne çıkarmak için koyu film */
+    z-index: -1;
+  }
+
+  /* INPUT GROUP  -------------------------------------------------------------*/
+.input-group .input-group-prepend .input-group-text{
+    background: #eef2ff;               /* gri yerine çok açık mavi/lila */
+    border: none;
+    color: #475569;
+  }
+  
+  .form-control{
+    border: none;
+    background: transparent;
+    box-shadow: inset 0 0 0 2px #e2e8f0;
+    border-radius: 9999px;             /* “pill” şekli */
+    padding-left: 1.15rem;
+    transition: box-shadow .25s ease;
+  }
+  .form-control:focus{
+    box-shadow: inset 0 0 0 2px var(--primary), 0 0 0 4px rgba(78,115,223,.25);
+  }
+  .btn-primary{
+    background: linear-gradient(135deg,#5884ff 0%, #3f6cfb 100%);
+    border: none;
+    box-shadow: 0 8px 16px -4px rgba(63,108,251,.35);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px -4px rgba(63,108,251,.45);
+  }
+  .btn-secondary{
+    background:#6c7280;
+    border:none;
+  }
+  .auth-card{
+    background: rgba(255,255,255,.65);
+    backdrop-filter: blur(8px) saturate(160%);
+  }

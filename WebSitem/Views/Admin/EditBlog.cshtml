@@ -1,0 +1,107 @@
+  @{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model Blog
+
+  <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Blog Düzenle</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Rapor Oluştur</a>
+                    </div>
+
+
+
+<form action= "/Admin/EditBlog" method="post" id="editBlogForm" >
+
+<input type="hidden" name="Id" value="@Model.Id">
+
+
+  <!-- Blog adı -->
+  <div class="form-group">
+    <input type="text"
+           id="blogname"
+           name="Name"
+           class="form-control form-control-user"
+           placeholder="Bloğunuzun İsmini Giriniz"
+           value="@Model.Name" required>
+  </div>
+
+  <!-- Blog açıklaması -->
+  <div class="form-group">
+    <textarea id="blogdescription"
+              name="Description"
+              class="form-control form-control-user"
+              placeholder="Yazınızı ekleyiniz " rows="15" required>@Model.Description</textarea>
+              
+  </div>
+
+  <!-- Resim URL'i -->
+  <div class="form-group">
+    <input type="text"
+           id="blogurl"
+            name="ImageUrl"
+           class="form-control form-control-user"
+           placeholder="Bloğunuzun Resim URL'sini Giriniz"
+           value="@Model.ImageUrl" required>
+  </div>
+
+  <!-- Etiketler -->
+  <div class="form-group">
+    <input type="text"
+           id="blogtags"
+           name="Tags"
+           class="form-control form-control-user"
+           placeholder="Bloğunuzun Etiketlerini Giriniz"
+           value=@Model.Tags required>
+  </div>
+
+  <!-- İşlem butonları + anahtar -->
+ <div class="d-flex flex-wrap align-items-center my-2 action-bar">
+
+  @* <a href="#" class="btn btn-success btn-icon-split mr-2">
+    <span class="icon text-white-50"><i class="fas fa-check"></i></span>
+    <span class="text">Kaydet</span>
+  </a> *@
+  <button class="btn btn-success btn-icon-split mr-2">
+    <span class="icon text-white-50"><i class="fas fa-check"></i></span>
+    <span class="text">Kaydet</span>
+  </button>
+
+  <a href="/Admin/DeleteBlog?blogId=@Model.Id" class="btn btn-danger btn-icon-split mr-2">
+    <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+    <span class="text">Sil</span>
+  </a>
+
+  <a href="/Admin/Comments?blogId=@Model.Id" class="btn btn-info btn-icon-split mr-2">
+    <span class="icon text-white-50"><i class="fas fa-info-circle"></i></span>
+    <span class="text">Yorumları Gör</span>
+  </a>
+
+  <a href="/Admin/Blogs" class="btn btn-secondary btn-icon-split mr-2">
+    <span class="icon text-white-50"><i class="fas fa-arrow-right"></i></span>
+    <span class="text">Geri Dön</span>
+  </a>
+@if(Model.Status==1){
+<a href="/Admin/ToggleStatus?id=@Model.Id" class="btn btn-warning btn-icon-split mr-2">
+     <span class="icon text-white-50">
+       <i class="fas fa-exclamation-triangle"></i>
+      </span>
+      <span class="text">Kapat</span>
+    </a>
+
+}else{
+   <a href="/Admin/ToggleStatus?id=@Model.Id" class="btn btn-primary btn-icon-split">
+    <span class="icon text-white-50">
+     <i class="fas fa-flag"></i>
+    </span>
+    <span class="text">Aç</span>
+   </a>   
+  }
+   
+ 
+
+</div>
+
+</form>

@@ -1,0 +1,60 @@
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model List<Comment>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Yorumlarım</h1>
+    <a href="/Admin/CreateBlog" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-plus fa-sm text-white-50"></i> Blog Oluştur
+    </a>
+</div>
+
+@if (Model.Count != 0)
+{
+    @foreach (var item in Model)
+    {
+        <div class="card shadow mb-4 border-left-info">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center bg-light">
+                <div>
+                    <h6 class="m-0 font-weight-bold text-info">
+                        <i class="fas fa-user-circle"></i> @item.Name
+                    </h6>
+                </div>
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle text-secondary" href="#" role="button" id="dropdownMenuLink"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-600"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                         aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Aksiyonlar:</div>
+                        <a class="dropdown-item text-danger" href="/Admin/DeleteComment?id=@item.Id">
+                            <i class="fas fa-trash-alt"></i> Sil
+                        </a>
+                        <a class="dropdown-item text-primary" href="/Blogs/Details?id=@item.BlogId">
+                            <i class="fas fa-link"></i> Bloga Git
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="text-dark" style="font-size: 16px;">
+                    <i class="fas fa-comment-dots text-secondary"></i> @item.Message
+                </p>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card shadow mb-4 border-left-warning">
+        <div class="card-body d-flex flex-column align-items-center justify-content-center py-5">
+            <i class="fas fa-comment-slash fa-3x text-warning mb-3"></i>
+            <h4 class="text-gray-700 mb-2">Henüz yorum bulunmuyor</h4>
+            <p class="text-muted text-center">Paylaşımlarınıza gelen yorumlar burada listelenecektir.</p>
+        </div>
+    </div>
+}

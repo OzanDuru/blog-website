@@ -1,0 +1,60 @@
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">
+        <i class="fas fa-user-plus text-primary"></i>  <!-- kullanıcı ekleme ikonu -->
+        Kullanıcı Kayıt
+    </h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-download fa-sm text-white-50"></i> Rapor Oluştur
+    </a>
+</div>
+
+<form asp-controller="Admin" asp-action="Register" method="post" class="user">
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <input type="text" class="form-control form-control-user"
+                   placeholder="İsim" name="Name" />
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control form-control-user"
+                   placeholder="Soyisim" name="Surname" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="email" class="form-control form-control-user"
+               placeholder="E-posta Adresi" name="Email" />
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <input type="password" class="form-control form-control-user"
+                   placeholder="Şifre" name="Password" />
+        </div>
+        <div class="col-sm-6">
+            <input type="password" class="form-control form-control-user"
+                   placeholder="Şifreyi Tekrar Giriniz" name="RePassword" />
+        </div>
+    </div>
+
+    <!-- Parola kuralları -->
+    <div class="alert alert-info p-2 small">
+        <i class="fas fa-info-circle"></i>
+        Şifre en az <strong>6 karakter</strong> olmalı ve <strong>büyük harf</strong>,
+        <strong>küçük harf</strong>, <strong>rakam</strong> ve
+        <strong>özel karakter</strong> (&nbsp;! ? # % &amp; …&nbsp;) içermelidir.
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-user btn-block">
+        <i class="fas fa-save"></i> Kullanıcı Oluştur
+    </button>
+
+    <!-- Yönlendirme bilgisi -->
+    <p class="text-center mt-3 small text-muted">
+        Kayıt işlemi tamamlandığında, otomatik olarak ana sayfaya yönlendirileceksiniz.
+    </p>
+</form>
+ 

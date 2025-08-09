@@ -1,0 +1,57 @@
+@* Buraya controllerdan Blog gödereceğiz *@
+@model List<Blog>   
+ 
+
+
+<div class="mainbar">
+    @foreach (var item in Model)
+    {
+      <div class="article">
+          <h2><span>@item.Name</span> </h2>
+          <div class="clr"></div>
+          <p><span class="date">@item.PublishDate.ToString("MMMM d\\t\\h  , yyyy 'at' h:mm tt")</span>> &nbsp;|&nbsp; Etiketler: <a href="#">@item.Tags</a>></p>
+          @* <img src="/images/img3.png" width="625" height="205" alt="" /> *@
+          <img src="@item.ImageUrl" width="625" height="205" alt="" />
+          @{
+    string description = item.Description;
+    string truncatedDescription = description.Length > 50 ? description.Substring(0,50)+ "..." : description;
+
+          }
+          
+          <p>@truncatedDescription</p>
+          <p class="spec"><a href="/Blogs/Details?id=@item.Id" class="rm">Devamını oku &raquo;</a>
+                    <a href="#" class="com" style="margin-left:5px"><span>@item.CommentCount</span> Comments</a>
+                    @* <a href="#" class="com" style="margin-left:5px"><span>@item.LikeCount</span> Like</a> *@
+                    <a href="#" class="com" style="margin-left:5px"><span>@item.ViewCount</span> View</a>
+           </p>
+        </div>  
+    }
+    
+    </div>
+
+
+
+<div class="sidebar">
+        <div class="searchform">
+          <h2 class="star"><span>Yan Menu</span></h2>
+          <div class="clr"></div>
+    <div class="searchform" ></div>
+          <form class="modern-search"  method="get" action="/Blogs/BlogContains">
+            <input class="form-control me-2" type="search" name="query" placeholder="Blog Ara..." aria-label="Ara">
+            <button type="submit" aria-label="Ara">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <div class="gadget">
+          
+          <div class="clr"></div>
+          <ul class="sb_menu">
+            <li><a href="/blogs/index">Anasayfa</a></li>
+            <li><a href="/blogs/Support">Destek</a></li>
+            <li><a href="/blogs/About">Hakkımızda</a></li>
+            
+            <li><a href="/blogs/Contact">İletişim</a></li>
+          </ul>
+        </div>
+    

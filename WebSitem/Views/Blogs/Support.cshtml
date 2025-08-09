@@ -1,0 +1,43 @@
+<div class="mainbar support-page">
+    <div class="article">
+        <h2 class="support-title">💖 Blogu Destekle</h2>
+        <p class="support-desc">
+            Eğer içeriklerimizi beğeniyorsan ve blogun gelişimine katkıda bulunmak istiyorsan, 
+            aşağıdaki yöntemlerle bize destek olabilirsin. Her bağış için teşekkürler! 🙏
+        </p>
+
+        <!-- IBAN ile Bağış -->
+        <div class="support-card">
+            <h3>🏦 IBAN ile Destek</h3>
+            <p>
+                <strong>Banka Adı:</strong> Türkiye Bankası<br>
+                <strong>IBAN:</strong> <span id="iban">TR12 3456 7890 1234 5678 0000 01</span>
+            </p>
+            <button class="copy-btn" onclick="copyIban()">IBAN Kopyala</button>
+        </div>
+
+        <!-- QR ile Bağış -->
+        <div class="support-card">
+            <h3>📱 QR Kod ile Hızlı Destek</h3>
+            <p>Mobil bankacılığınızı açın ve QR kodu okutarak kolayca bağış yapın.</p>
+            <img src="../images/frame.png" alt="QR Kod ile Bağış" class="qr-image">
+        </div>
+
+        <!-- Otomatik Teşekkür -->
+        <div class="thankyou-section" id="thankyou-message" style="display:none;">
+            <h3>🎉 Teşekkürler!</h3>
+            <p>Destek olduğun için çok teşekkür ederiz! 💖</p>
+        </div>
+    </div>
+</div>
+<script>
+function copyIban() {
+    const iban = document.getElementById("iban").innerText;
+    navigator.clipboard.writeText(iban).then(() => {
+        document.getElementById("thankyou-message").style.display = "block";
+        setTimeout(() => {
+            document.getElementById("thankyou-message").style.display = "none";
+        }, 5000);
+    });
+}
+</script>
