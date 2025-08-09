@@ -5,6 +5,8 @@ ASP.NET MVC ile geliştirilmiş blog sitesi projesi.
 - Kullanıcılar blog yazılarını okuyabilir, yorum yapabilir.
 - Admin panelinden blog yönetimi yapılabilir.
 - ER şeması proje ilişkilerini gösterir.
+- DB olarak MySql kullandım
+
 
 ---
 
